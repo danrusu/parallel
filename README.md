@@ -3,15 +3,23 @@
 - POC: Running 2 bash scripts in parallel
 
 ```bash
-npm test
+npm run bash
 ```
 
 - POC: Cucumber.js
 
 ```bash
-npm smoke
+npm run smoke
 
-npm sanity
+npm run sanity
 
-npm all
+npm run all
+```
+
+- POC: Web workers
+
+```bash
+npm run wt
+
+npm run w
 ```

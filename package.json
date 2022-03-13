@@ -4,21 +4,28 @@
   "description": "parallel execution POC",
   "main": "bash-scripts.js",
   "scripts": {
-    "test": "node src/bash-scripts.js",
     "smoke": "cucumber-js --tags @smoke",
     "sanity": "cucumber-js --tags @smoke",
-    "all": "cucumber-js --tags \"@smoke or @sanity\""
+    "all": "cucumber-js --tags \"@smoke or @sanity\"",
+    "bash": "node src/bash-scripts.js",
+    "w": "node src/worker/main.mjs",
+    "wt": "node --experimental-worker src/worker-threads/main.js"
   },
   "keywords": [
     "cucumber",
     "testcafe",
-    "parallel"
+    "parallel",
+    "web workers"
   ],
   "author": "Dan Rusu",
   "license": "MIT",
   "dependencies": {
     "@cucumber/cucumber": "^7.3.2",
+    "isomorphic-fetch": "^3.0.0",
     "paralleljs": "^1.1.0",
-    "testcafe": "^1.18.4"
+    "testcafe": "^1.18.4",
+    "web-worker": "^1.2.0",
+    "worker-farm": "^1.7.0",
+    "worker-threads": "^1.0.0"
   }
 }
