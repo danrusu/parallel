@@ -1,17 +1,21 @@
 {
   "name": "parallel",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "parallel execution POC",
+  "main": "bash-scripts.js",
   "scripts": {
     "test": "node src/bash-scripts.js",
     "smoke": "cucumber-js --tags @smoke",
     "sanity": "cucumber-js --tags @smoke",
     "all": "cucumber-js --tags \"@smoke or @sanity\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "cucumber",
+    "testcafe",
+    "parallel"
+  ],
+  "author": "Dan Rusu",
+  "license": "MIT",
   "devDependencies": {
     "@cucumber/cucumber": "^7.3.2"
   },
