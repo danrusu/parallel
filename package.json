@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "test": "node src/bash-scripts.js",
     "smoke": "cucumber-js --tags @smoke",
     "sanity": "cucumber-js --tags @smoke",
     "all": "cucumber-js --tags \"@smoke or @sanity\""
