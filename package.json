@@ -16,10 +16,9 @@
   ],
   "author": "Dan Rusu",
   "license": "MIT",
-  "devDependencies": {
-    "@cucumber/cucumber": "^7.3.2"
-  },
   "dependencies": {
+    "@cucumber/cucumber": "^7.3.2",
+    "paralleljs": "^1.1.0",
     "testcafe": "^1.18.4"
   }
 }
