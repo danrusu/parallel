@@ -1,6 +1,6 @@
 var spawn = require('child_process').spawn;
-var process1 = spawn('sh', ['./scripts/first.sh', 'Hello', 'John', 'Doe']);
-var process2 = spawn('sh', ['./scripts/second.sh', 'Test', 'automation']);
+var process1 = spawn('sh', ['./sh_scripts/first.sh', 'Hello', 'John', 'Doe']);
+var process2 = spawn('sh', ['./sh_scripts/second.sh', 'Test', 'automation']);
 
 let error = [];
 let output = [];

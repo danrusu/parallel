@@ -4,9 +4,17 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "node src/main.js"
+    "smoke": "cucumber-js --tags @smoke",
+    "sanity": "cucumber-js --tags @smoke",
+    "all": "cucumber-js --tags \"@smoke or @sanity\""
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^7.3.2"
+  },
+  "dependencies": {
+    "testcafe": "^1.18.4"
+  }
 }
