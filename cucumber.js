@@ -1,12 +1,12 @@
 const cliTokens = [
-  '--require src/stepDefinitions/**/*.js',
+  '--require src/stepDefinitions/**/*.ts',
   '--format json:./reports/cucumber_report.json',
   '--publish-quiet',
 ];
 
 const features = process.env['FEATURES']
   ? `${process.env['FEATURES']}`
-  : 'src/features';
+  : 'src/features'; // all features by default
 
 cliTokens.push(features);
 
