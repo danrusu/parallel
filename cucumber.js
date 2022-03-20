@@ -4,13 +4,13 @@ const cliTokens = [
   '--publish-quiet',
 ];
 
-const features = process.env['FEATURES']
-  ? `${process.env['FEATURES']}`
-  : 'src/features'; // all features by default
+// const features = process.env['FEATURES']
+//   ? `${process.env['FEATURES']}`
+//   : 'src/features'; // all features by default
 
-cliTokens.push(features);
+// cliTokens.push(features);
 
-console.log(cliTokens);
+console.log(`\cucumber.js CLI: ${JSON.stringify(cliTokens)}`);
 
 module.exports = {
   default: cliTokens.join(' '),

@@ -1,4 +1,3 @@
-const { exit } = require('process');
 const { workerData, parentPort } = require('worker_threads');
 const {
   default: cucumberRunner,
@@ -6,13 +5,20 @@ const {
 
 (async () => {
   console.log(`Worker cli: ${process.argv}`);
+  const { features, reportName } = workerData;
 
-  process.env['FEATURES'] = workerData;
+  process.env.FEATURES = features;
+  process.env.REPORT_NAME = reportName;
+
   // uses cucumber.js which will append features to the CLI from  process.env['FEATURES']
   try {
     await cucumberRunner();
-    parentPort.postMessage(`cucumber | ${workerData} | FINISHED`);
+    parentPort.postMessage(
+      `cucumber | ${JSON.stringify(workerData)} | FINISHED`
+    );
   } catch (err) {
-    parentPort.postMessage(`cucumber | ${workerData} | FAILED: ${err}`);
+    parentPort.postMessage(
+      `cucumber | ${JSON.stringify(workerData)} | FAILED: ${err}`
+    );
   }
 })();

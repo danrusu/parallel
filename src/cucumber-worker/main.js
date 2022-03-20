@@ -24,19 +24,23 @@ function runService(workerData) {
 async function run() {
   const startTime = new Date().getTime();
 
-  // const resultPromise = runService('');  //all from /src/features
-  const result1Promise = runService('src/features/f1.feature');
-  const result2Promise = runService('src/features/f2.feature');
-  const result3Promise = runService('src/features/f3.feature');
-  const result4Promise = runService('src/features/f4.feature');
-  const result5Promise = runService('src/features/f5.feature');
+  const result1Promise = runService({
+    features: 'src/features/f1.feature',
+    reportName: 'f1',
+  });
+  const result2Promise = runService({
+    features: 'src/features/f2.feature',
+    reportName: 'f2',
+  });
+  const result3Promise = runService({
+    features: 'src/features/f3.feature',
+    reportName: 'f3',
+  });
 
   const results = await Promise.all([
     result1Promise,
     result2Promise,
     result3Promise,
-    result4Promise,
-    result5Promise,
   ]);
 
   console.log('_____________________________________');

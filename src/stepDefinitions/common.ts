@@ -1,16 +1,15 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
-const testcafe = require('testcafe');
 
 Given('I navigate to {string}', async url => {
-  console.log('given');
+  console.log(`GIVEN`);
 });
 
 When('I click {string}', async linkText => {
-  console.log('when');
+  console.log(`WHEN`);
 });
 
 Then('I can see the {string} page', async pageName => {
-  console.log('then');
+  console.log(`THEN`);
 });
 
 // Given('I can fail', async () => {

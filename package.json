@@ -7,10 +7,11 @@
     "smoke": "cucumber-js --tags @smoke",
     "sanity": "cucumber-js --tags @smoke",
     "all": "cucumber-js --tags \"@smoke or @sanity\"",
-    "bash": "node src/bash-scripts.js",
+    "node-fork:bash": "node src/node-fork/bash-scripts.js",
+    "node-fork:cucumber": "node src/node-fork/cucumber-fork.js",
     "w": "node src/worker/main.mjs",
     "wt": "node --experimental-worker src/worker-threads/main.js",
-    "cwt": "node --experimental-worker src/cucumber-worker/main.js -t @smoke"
+    "cwt": "node --experimental-worker src/cucumber-worker/main.js"
   },
   "keywords": [
     "cucumber",

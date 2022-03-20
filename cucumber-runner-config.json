@@ -1,0 +1,16 @@
+[
+  {
+    "feature": "src/features/f1.feature",
+    "env": { "TEST_NAME": "f1" }
+  },
+  {
+    "feature": "src/features/f2.feature",
+    "cliArgs": ["--tags", "@sanity"],
+    "env": { "TEST_NAME": "f2" }
+  },
+  {
+    "feature": "src/features/f1.feature",
+    "cliArgs": ["--tags", "@sanity or @smoke"],
+    "env": { "TEST_NAME": "f3" }
+  }
+]

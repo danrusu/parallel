@@ -1,0 +1,15 @@
+[
+  "node",
+  "node_modules/@cucumber/cucumber/bin/cucumber-js",
+  "src/features/f1.feature",
+  "--tags",
+  "@sanity or @smoke"
+]cucumber.js CLI: ["--require src/stepDefinitions/**/*.ts","--format json:./reports/cucumber_report.json","--publish-quiet"]
+GIVEN
+.WHEN
+.THEN
+.
+
+1 scenario (1 passed)
+3 steps (3 passed)
+0m00.042s (executing steps: 0m00.005s)
