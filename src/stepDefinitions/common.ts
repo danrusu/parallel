@@ -12,6 +12,6 @@ Then('I can see the {string} page', async pageName => {
   console.log(`THEN`);
 });
 
-// Given('I can fail', async () => {
-//   throw new Error('TEST FAILURE');
-// });
+Given('I fail', async () => {
+  throw new Error('TEST FAILURE');
+});

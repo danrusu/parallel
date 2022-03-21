@@ -5,12 +5,12 @@ const {
 
 (async () => {
   console.log(`Worker cli: ${process.argv}`);
-  const { features, reportName } = workerData;
+  const { features, testName } = workerData;
 
   process.env.FEATURES = features;
-  process.env.REPORT_NAME = reportName;
+  process.env.TEST_NAME = testName;
 
-  // uses cucumber.js which will append features to the CLI from  process.env['FEATURES']
+  // uses cucumber.js which will append features to the CLI from process.env.FEATURES
   try {
     await cucumberRunner();
     parentPort.postMessage(

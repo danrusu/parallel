@@ -3,14 +3,21 @@ const fs = require('fs');
 
 const pretty = json => JSON.stringify(json, null, 2);
 
-const spawnCucumber = ({ feature, cliArgs = [], env }) =>
-  spawn(
+const spawnCucumberProcess = ({ feature, cliArgs = [], env }) => {
+  const cucumberProcess = spawn(
     'node',
     ['node_modules/@cucumber/cucumber/bin/cucumber-js', feature, ...cliArgs],
     {
       env,
     }
   );
+  const testName = env.TEST_NAME;
+  writeToLogFile(testName)(pretty(cucumberProcess.spawnargs));
+  cucumberProcess.stdout.on('data', writeToLogFile(testName));
+  cucumberProcess.stderr.on('data', writeToLogFile(testName));
+
+  return cucumberProcess;
+};
 
 const writeToLogFile = testName => data => {
   fs.writeFile(`log/${testName}.log`, data, { flag: 'a' }, err => {
@@ -21,26 +28,23 @@ const writeToLogFile = testName => data => {
 };
 
 const cucumberRunnerConfig = require('../../cucumber-runner-config.json');
-const cucumberProcesses = [];
 
-cucumberRunnerConfig.forEach(cucumberConfig => {
-  const process = spawnCucumber(cucumberConfig);
-  const testName = cucumberConfig.env.TEST_NAME;
-  cucumberProcesses.push(process);
-  writeToLogFile(testName)(pretty(process.spawnargs));
-  process.stdout.on('data', writeToLogFile(testName));
-  process.stderr.on('data', writeToLogFile(testName));
-});
+const cucumberProcesses = cucumberRunnerConfig.reduce((processes, config) => {
+  const currentProcess = spawnCucumberProcess(config);
+  processes.push(currentProcess);
+  return processes;
+}, []);
 
-const waitFor = process =>
+const waitForExitCode = process =>
   new Promise(resolve => {
     process.on('exit', resolve);
   });
 
 (async () => {
-  console.log('start');
+  const startTime = new Date().getTime();
 
-  const exitCodes = await Promise.all(cucumberProcesses.map(waitFor));
+  const exitCodes = await Promise.all(cucumberProcesses.map(waitForExitCode));
 
-  console.log(`exitCodes: ${exitCodes}`);
+  const durationInSeconds = (new Date().getTime() - startTime) / 1000;
+  console.log({ exitCodes, durationInSeconds });
 })();

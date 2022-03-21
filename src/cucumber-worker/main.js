@@ -26,15 +26,15 @@ async function run() {
 
   const result1Promise = runService({
     features: 'src/features/f1.feature',
-    reportName: 'f1',
+    testName: 'f1',
   });
   const result2Promise = runService({
     features: 'src/features/f2.feature',
-    reportName: 'f2',
+    testName: 'f2',
   });
   const result3Promise = runService({
     features: 'src/features/f3.feature',
-    reportName: 'f3',
+    testName: 'f3',
   });
 
   const results = await Promise.all([
