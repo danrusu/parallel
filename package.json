@@ -11,7 +11,7 @@
     "wt": "node --experimental-worker src/worker-threads/main.js",
     "cwt": "node --experimental-worker src/cucumber-worker/main.js",
     "node-fork:bash": "node src/node-fork/bash-scripts.js",
-    "node-fork:cucumber": "node src/node-fork/cucumber-fork.js"
+    "node-fork:cucumber": "node src/node-fork/cucumber-runner.js"
   },
   "keywords": [
     "cucumber",
